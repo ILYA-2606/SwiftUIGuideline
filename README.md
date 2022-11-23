@@ -10,10 +10,12 @@
 
 ## Порядок написания свойств
 
-- Порядок написания должен соответствовать в первую очередь по модификаторам доступа от наиболее открытого к закрытому (open, public, internal, fileprivate, private)
-- Далее от принадлежности (enum, let, var, func)
-- Далее по порядку врапперов (Environment, ObservedObject, StateObject, Binding, State, без враппера)
-- Пример корректного порядка свойств внутри View:  
+- Типы (enum/struct) в порядке доступа от наиболее открытого к закрытому (open, public, internal, fileprivate, private)
+- Константы и переменные (let/var) в порядке врапперов (Environment, ObservedObject, StateObject, Binding, State, без враппера) и доступа
+- Инициализаторы
+- Приватные методы
+
+Пример корректного порядка свойств внутри View:  
 ```swift
 struct MyView: some View {
     enum State {
@@ -21,7 +23,14 @@ struct MyView: some View {
         case closed
     }
     
-    let state: State
+    struct Container { ... }
+    
+    private enum Mode {
+        case showed
+        case hided
+    }
+    
+    let state: State = .closed
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -34,7 +43,13 @@ struct MyView: some View {
     @State var title = ""
     
     var body: some View { ... }
-
+    
+    private let mode: Mode = .hided
+    
     @Environment(\.openURL) private var openURL
+    
+    init() { ... }
+    
+    private func processLoading() { ... }
 }
 ```
