@@ -25,24 +25,24 @@ struct MyView: some View {
     private struct { }
 
     let
-    var
     
     @Environment var 
     @ObservedObject var 
     @StateObject var 
     @Binding var 
     @State var 
+    var
     
     var body: some View { }
     
     private let 
-    private var 
 
     @Environment private var 
     @ObservedObject private var 
     @StateObject private var 
     @Binding private var 
     @State private var 
+    private var 
     
     init() { }
     
