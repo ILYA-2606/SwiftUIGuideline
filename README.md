@@ -18,38 +18,34 @@
 Пример корректного порядка свойств внутри View:  
 ```swift
 struct MyView: some View {
-    enum State {
-        case opened
-        case closed
-    }
+    enum { }
+    struct { }
+ 
+    private enum { }
+    private struct { }
+
+    let
+    var
     
-    struct Container { ... }
+    @Environment var 
+    @ObservedObject var 
+    @StateObject var 
+    @Binding var 
+    @State var 
     
-    private enum Mode {
-        case showed
-        case hided
-    }
+    var body: some View { }
     
-    let state: State = .closed
+    private let 
+    private var 
+
+    @Environment private var 
+    @ObservedObject private var 
+    @StateObject private var 
+    @Binding private var 
+    @State private var 
     
-    @Environment(\.presentationMode) var presentationMode
+    init() { }
     
-    @ObservedObject var storage = ScreenStorage.shared
-    
-    @StateObject var viewModel = MyViewModel()
-    
-    @Binding var isOn: Bool
-    
-    @State var title = ""
-    
-    var body: some View { ... }
-    
-    private let mode: Mode = .hided
-    
-    @Environment(\.openURL) private var openURL
-    
-    init() { ... }
-    
-    private func processLoading() { ... }
+    private func () { }
 }
 ```
